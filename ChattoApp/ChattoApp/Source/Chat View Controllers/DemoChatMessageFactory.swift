@@ -51,7 +51,7 @@ class DemoChatMessageFactory {
 
     class func makePhotoMessage(_ uid: String, image: UIImage, size: CGSize, isIncoming: Bool) -> DemoPhotoMessageModel {
         let messageModel = self.makeMessageModel(uid, isIncoming: isIncoming, type: PhotoMessageModel<MessageModel>.chatItemType)
-        let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, imageSize: size, image: image)
+        let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, imageSize: size, image: image, imagePath: nil, compressImagePath: nil)
         return photoMessageModel
     }
 

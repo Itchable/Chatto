@@ -39,7 +39,8 @@ class DemoTextMessageHandler: BaseMessageInteractionHandlerProtocol {
         self.baseHandler.userDidTapOnAvatar(viewModel: viewModel)
     }
 
-    func userDidTapOnBubble(viewModel: DemoTextMessageViewModel) {
+    
+    func userDidTapOnBubble(viewModel: DemoTextMessageViewModel, cellBubble: UIView) {
         self.baseHandler.userDidTapOnBubble(viewModel: viewModel)
     }
 

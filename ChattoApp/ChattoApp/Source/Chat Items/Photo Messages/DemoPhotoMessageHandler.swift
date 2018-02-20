@@ -26,6 +26,7 @@ import Foundation
 import ChattoAdditions
 
 class DemoPhotoMessageHandler: BaseMessageInteractionHandlerProtocol {
+    
     private let baseHandler: BaseMessageHandler
     init (baseHandler: BaseMessageHandler) {
         self.baseHandler = baseHandler
@@ -40,6 +41,10 @@ class DemoPhotoMessageHandler: BaseMessageInteractionHandlerProtocol {
     }
 
     func userDidTapOnBubble(viewModel: DemoPhotoMessageViewModel) {
+        self.baseHandler.userDidTapOnBubble(viewModel: viewModel)
+    }
+    
+    func userDidTapOnBubble(viewModel: DemoPhotoMessageViewModel, cellBubble: UIView) {
         self.baseHandler.userDidTapOnBubble(viewModel: viewModel)
     }
 

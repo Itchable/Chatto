@@ -29,7 +29,7 @@ class DemoPhotoMessageViewModel: PhotoMessageViewModel<DemoPhotoMessageModel> {
 
     let fakeImage: UIImage
     override init(photoMessage: DemoPhotoMessageModel, messageViewModel: MessageViewModelProtocol) {
-        self.fakeImage = photoMessage.image
+        self.fakeImage = photoMessage.image ?? UIImage()
         super.init(photoMessage: photoMessage, messageViewModel: messageViewModel)
         if photoMessage.isIncoming {
             self.image.value = nil

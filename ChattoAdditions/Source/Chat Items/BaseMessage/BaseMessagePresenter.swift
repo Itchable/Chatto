@@ -36,7 +36,7 @@ public protocol BaseMessageInteractionHandlerProtocol {
     associatedtype ViewModelT
     func userDidTapOnFailIcon(viewModel: ViewModelT, failIconView: UIView)
     func userDidTapOnAvatar(viewModel: ViewModelT)
-    func userDidTapOnBubble(viewModel: ViewModelT)
+    func userDidTapOnBubble(viewModel: ViewModelT, cellBubble: UIView)
     func userDidBeginLongPressOnBubble(viewModel: ViewModelT)
     func userDidEndLongPressOnBubble(viewModel: ViewModelT)
     func userDidSelectMessage(viewModel: ViewModelT)
@@ -110,7 +110,7 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
             cell.allowAccessoryViewRevealing = !decorationAttributes.messageDecorationAttributes.isShowingSelectionIndicator
             cell.onBubbleTapped = { [weak self] (cell) in
                 guard let sSelf = self else { return }
-                sSelf.onCellBubbleTapped()
+                sSelf.onCellBubbleTapped(cell)
             }
             cell.onBubbleLongPressBegan = { [weak self] (cell) in
                 guard let sSelf = self else { return }
@@ -186,8 +186,8 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         return false
     }
 
-    open func onCellBubbleTapped() {
-        self.interactionHandler?.userDidTapOnBubble(viewModel: self.messageViewModel)
+    open func onCellBubbleTapped(_ cellBubble: UIView) {
+        self.interactionHandler?.userDidTapOnBubble(viewModel: self.messageViewModel, cellBubble: cellBubble)
     }
 
     open func onCellBubbleLongPressBegan() {
